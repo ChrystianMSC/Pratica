@@ -1,5 +1,4 @@
 class TestCase:
-
     def __init__(self, test_method_name):
         self.test_method_name = test_method_name
 
@@ -20,3 +19,23 @@ class TestCase:
 
     def tear_down(self):
         pass
+
+    def assert_equal(self, first, second):
+        if first != second:
+            msg = f"{repr(first)} != {repr(second)}"
+            raise AssertionError(msg)
+
+    def assert_true(self, expr):
+        if not expr:
+            msg = f"{expr} is not True"
+            raise AssertionError(msg)
+
+    def assert_false(self, expr):
+        if expr:
+            msg = f"{expr} is not False"
+            raise AssertionError(msg)
+
+    def assert_in(self, member, container):
+        if member not in container:
+            msg = f"{repr(member)} not found in {repr(container)}"
+            raise AssertionError(msg)
